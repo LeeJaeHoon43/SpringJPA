@@ -13,12 +13,10 @@ class UserTest {
         user.setEmail("ljh1111@gmail.com");
         System.out.println(">>> " + user);
 
-        User user1 = new User("ljh","ljh1111@gmail.com", LocalDateTime.now(), LocalDateTime.now());
+        User user1 =  new User(null,"ljh","ljh1111@gmail.com", LocalDateTime.now(), LocalDateTime.now());
         User user2 = new User("hong","ljh2222@gmail.com");
-        User user3 = User.builder().name("song").email("song3333@gmail.com").build();
 
         System.out.println(">>> " + user1);
         System.out.println(">>> " + user2);
-        System.out.println(">>> " + user3);
     }
 }
