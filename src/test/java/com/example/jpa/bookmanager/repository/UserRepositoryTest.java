@@ -66,10 +66,33 @@ class UserRepositoryTest {
 
         // ExampleMatcher matcher = ExampleMatcher.matching().withIgnorePaths("name").withMatcher("email", endsWith());
         // Example<User> example = Example.of(new User("ma", "gmail.com"), matcher);
-        User user = new User();
-        user.setEmail("slow");
-        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("email", contains());
-        Example<User> example = Example.of(user, matcher);
-        userRepository.findAll(example).forEach(System.out::println);
+        // User user = new User();
+        // user.setEmail("slow");
+        // ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("email", contains());
+        // Example<User> example = Example.of(user, matcher);
+        // userRepository.findAll(example).forEach(System.out::println);
+
+        // userRepository.save(new User("david", "david@naver.com"));
+
+        // User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        // user.setEmail("martin-updated@gmail.com");
+
+        // userRepository.save(user);
+    }
+
+    @Test
+    public void select(){
+        System.out.println(userRepository.findByName("dennis"));
+        System.out.println("findByEmail : " + userRepository.findByEmail("martin@fastcampus.com"));
+        System.out.println("getByEmail : " + userRepository.getByEmail("martin@fastcampus.com"));
+        System.out.println("readByEmail : " + userRepository.readByEmail("martin@fastcampus.com"));
+        System.out.println("queryByEmail : " + userRepository.queryByEmail("martin@fastcampus.com"));
+        System.out.println("searchByEmail : " + userRepository.searchByEmail("martin@fastcampus.com"));
+        System.out.println("streamByEmail : " + userRepository.streamByEmail("martin@fastcampus.com"));
+        System.out.println("findUserByEmail : " + userRepository.findUserByEmail("martin@fastcampus.com"));
+        System.out.println("findSomethingByEmail : " + userRepository.findSomethingByEmail("martin@fastcampus.com"));
+        System.out.println("findFirstByName : " + userRepository.findFirstByName("martin"));
+        System.out.println("findTop1ByName : " + userRepository.findTop1ByName("martin"));
+        System.out.println("findLast1ByName : " + userRepository.findLast1ByName("martin"));
     }
 }
