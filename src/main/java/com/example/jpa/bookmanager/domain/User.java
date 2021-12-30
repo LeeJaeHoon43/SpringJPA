@@ -6,14 +6,15 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
+@Data
 @Builder
 @Entity
-public class User {
-    @Id // PK
+@Table(name = "user", indexes = {@Index(columnList = "name")}, uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
+public class User { // Entity 도메인 클래스.
+    @Id // PK 지정.
     @GeneratedValue
     private Long id;
 
@@ -23,7 +24,12 @@ public class User {
     @NonNull
     private String email;
 
+    @Enumerated(value = EnumType.STRING)
+    private Gender gender;
+
+    @Column(updatable = false)
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
 
 //    @OneToMany(fetch = FetchType.EAGER)

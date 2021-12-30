@@ -1,5 +1,6 @@
 package com.example.jpa.bookmanager.repository;
 
+import com.example.jpa.bookmanager.domain.Gender;
 import com.example.jpa.bookmanager.domain.User;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
@@ -123,6 +124,27 @@ class UserRepositoryTest {
         System.out.println("findFirstByNameOrderByIdDescEmailAsc : " + userRepository.findFirstByNameOrderByIdDescEmailAsc("martin"));
         System.out.println("findFirstByNameWithSortParams : " + userRepository.findFirstByName("martin", Sort.by(Sort.Order.desc("id"), Sort.Order.asc("email"))));
         System.out.println("findByNameWithPaging : " + userRepository.findByName("martin", PageRequest.of(1, 1,Sort.by(Sort.Order.desc("id")))).getTotalElements());
+    }
+
+    @Test
+    void insertAndUpdateTest(){
+        User user = new User();
+        user.setName("ljh");
+        user.setEmail("ljh1111@gmail.com");
+        userRepository.save(user);
+
+        User user2 = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user2.setName("hong");
+        userRepository.save(user2);
+    }
+
+    @Test
+    void enumTest(){
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user.setGender(Gender.MALE);
+        userRepository.save(user);
+        userRepository.findAll().forEach(System.out::println);
+        System.out.println(userRepository.findRowRecord().get("gender"));
     }
 
     private Sort getSort(){
