@@ -1,48 +1,36 @@
 package com.example.jpa.bookmanager.domain;
 
 import com.example.jpa.bookmanager.domain.listener.Auditable;
-import com.example.jpa.bookmanager.domain.listener.UserEntityListener;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 @NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@Builder
-@Entity
-@EntityListeners(value = {UserEntityListener.class})
-@Table(name = "user", indexes = {@Index(columnList = "name")}, uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
-public class User extends BaseEntity implements Auditable { // Entity 도메인 클래스.
-    @Id // PK 지정.
+// @EntityListeners(value = AuditingEntityListener.class)
+public class Book extends BaseEntity implements Auditable {
+
+    @Id
     @GeneratedValue
     private Long id;
 
-    @NonNull
     private String name;
+    private String author;
 
-    @NonNull
-    private String email;
-
-    @Enumerated(value = EnumType.STRING)
-    private Gender gender;
-
-//    @Column(updatable = false)
 //    @CreatedDate
 //    private LocalDateTime createdAt;
 //
 //    @LastModifiedDate
 //    private LocalDateTime updatedAt;
-
-//    @OneToMany(fetch = FetchType.EAGER)
-//    private List<Address> address;
 
 //    @PrePersist
 //    public void prePersist(){
