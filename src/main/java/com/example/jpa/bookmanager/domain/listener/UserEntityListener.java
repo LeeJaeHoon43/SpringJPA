@@ -13,7 +13,7 @@ import javax.persistence.PreUpdate;
 public class UserEntityListener {
     @PrePersist
     @PreUpdate
-    public void prePersistAndPreUpdate(Object o){
+    public void prePersistAndPreUpdate(Object o) {
         UserHistoryRepository userHistoryRepository = BeanUtils.getBean(UserHistoryRepository.class);
 
         User user = (User) o;

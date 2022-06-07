@@ -1,13 +1,15 @@
 package com.example.jpa.bookmanager.domain;
 
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
     @Test
-    public void test(){
+    public void test() {
         User user = new User();
         user.setName("ljh");
         user.setEmail("ljh1111@gmail.com");

@@ -27,7 +27,7 @@ class UserRepositoryTest {
     private UserHistoryRepository userHistoryRepository;
 
     @Test
-    public void crud(){
+    public void crud() {
         // userRepository.save(new User());
         // userRepository.findAll().forEach(System.out::println);
         // List<User> users = userRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
@@ -85,7 +85,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    public void select(){
+    public void select() {
         System.out.println(userRepository.findByName("dennis"));
         System.out.println("findByEmail : " + userRepository.findByEmail("martin@fastcampus.com"));
         System.out.println("getByEmail : " + userRepository.getByEmail("martin@fastcampus.com"));
@@ -106,8 +106,8 @@ class UserRepositoryTest {
         System.out.println("findByCreatedAtGreaterThan : " + userRepository.findByCreatedAtGreaterThan(LocalDateTime.now().minusDays(1L)));
         System.out.println("findByCreatedAtGreaterThanEqual : " + userRepository.findByCreatedAtGreaterThanEqual(LocalDateTime.now().minusDays(1L)));
         System.out.println("findByCreatedAtBetween : " + userRepository.findByCreatedAtBetween(LocalDateTime.now().minusDays(1L), LocalDateTime.now().plusDays(1L)));
-        System.out.println("findByIdBetween : " + userRepository.findByIdBetween(1L,3L));
-        System.out.println("findByIdGreaterThanEqualAndIdLessThanEqual : " + userRepository.findByIdGreaterThanEqualAndIdLessThanEqual(1L,3L));
+        System.out.println("findByIdBetween : " + userRepository.findByIdBetween(1L, 3L));
+        System.out.println("findByIdGreaterThanEqualAndIdLessThanEqual : " + userRepository.findByIdGreaterThanEqualAndIdLessThanEqual(1L, 3L));
 
         System.out.println("findByIdIsNotNull : " + userRepository.findByIdIsNotNull());
         // System.out.println("findByAddressIsNotEmpty : " + userRepository.findByAddressIsNotEmpty());
@@ -119,17 +119,17 @@ class UserRepositoryTest {
     }
 
     @Test
-    void pagingAndSortingTest(){
+    void pagingAndSortingTest() {
         System.out.println("findTop1ByName : " + userRepository.findTop1ByName("martin"));
         System.out.println("findLast1ByName : " + userRepository.findLast1ByName("martin"));
         System.out.println("findTopByNameOrderByIdDesc : " + userRepository.findTopByNameOrderByIdDesc("martin"));
         System.out.println("findFirstByNameOrderByIdDescEmailAsc : " + userRepository.findFirstByNameOrderByIdDescEmailAsc("martin"));
         System.out.println("findFirstByNameWithSortParams : " + userRepository.findFirstByName("martin", Sort.by(Sort.Order.desc("id"), Sort.Order.asc("email"))));
-        System.out.println("findByNameWithPaging : " + userRepository.findByName("martin", PageRequest.of(1, 1,Sort.by(Sort.Order.desc("id")))).getTotalElements());
+        System.out.println("findByNameWithPaging : " + userRepository.findByName("martin", PageRequest.of(1, 1, Sort.by(Sort.Order.desc("id")))).getTotalElements());
     }
 
     @Test
-    void insertAndUpdateTest(){
+    void insertAndUpdateTest() {
         User user = new User();
         user.setName("ljh");
         user.setEmail("ljh1111@gmail.com");
@@ -141,7 +141,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void enumTest(){
+    void enumTest() {
         User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         user.setGender(Gender.MALE);
         userRepository.save(user);
@@ -150,7 +150,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void listenerTest(){
+    void listenerTest() {
         User user = new User();
         user.setEmail("martin2@fastcampus.com");
         user.setName("martin");
@@ -163,7 +163,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void prePersistTest(){
+    void prePersistTest() {
         User user = new User();
         user.setEmail("martin2@fastcampus.com");
         user.setName("martin");
@@ -174,7 +174,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void preUpdateTest(){
+    void preUpdateTest() {
         User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         System.out.println("as-is : " + user);
         user.setName("martin22");
@@ -183,7 +183,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void userHistoryTest(){
+    void userHistoryTest() {
         User user = new User();
         user.setEmail("ljh1111@gmail.com");
         user.setName("ljh-new");
@@ -195,7 +195,7 @@ class UserRepositoryTest {
         userHistoryRepository.findAll().forEach(System.out::println);
     }
 
-    private Sort getSort(){
+    private Sort getSort() {
         return Sort.by(
                 Sort.Order.desc("id"),
                 Sort.Order.asc("email"),

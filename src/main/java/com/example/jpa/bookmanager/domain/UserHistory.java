@@ -24,7 +24,7 @@ public class UserHistory extends BaseEntity implements Auditable {
     @GeneratedValue
     private Long id;
 
-    private Long userId;
+    private Long userId; // User 엔티티의 FK.
     private String name;
     private String email;
 

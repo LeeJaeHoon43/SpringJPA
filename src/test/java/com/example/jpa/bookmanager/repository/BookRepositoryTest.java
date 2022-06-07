@@ -12,7 +12,7 @@ public class BookRepositoryTest {
     private BookRepository bookRepository;
 
     @Test
-    void bookTest(){
+    void bookTest() {
         Book book = new Book();
         book.setName("JPA 퀵스타트");
         book.setAuthor("채규태");
