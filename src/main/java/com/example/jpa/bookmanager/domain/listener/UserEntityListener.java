@@ -4,9 +4,6 @@ import com.example.jpa.bookmanager.domain.User;
 import com.example.jpa.bookmanager.domain.UserHistory;
 import com.example.jpa.bookmanager.repository.UserHistoryRepository;
 import com.example.jpa.bookmanager.support.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
