@@ -12,17 +12,21 @@ import javax.persistence.*;
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class UserHistory extends BaseEntity{
+public class Review extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @Column(name = "user_id", insertable = false, updatable = false)
-    // private Long userId; // User 엔티티의 FK.
+    private String title;
 
-    private String name;
-    private String email;
+    private String content;
+
+    private float score;
 
     @ManyToOne
     private User user;
+
+    @ManyToOne
+    private Book book;
 }
